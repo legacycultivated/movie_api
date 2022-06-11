@@ -54,7 +54,6 @@ let movies = [
 ];
 
 //GET request
-// GET requests
 app.get("/", (req, res) => {
   res.send("Welcome to myFlix!");
 });
