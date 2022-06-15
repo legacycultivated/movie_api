@@ -1,27 +1,27 @@
 {
-  "name": "movie_api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/legacycultivated/movie_api.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/legacycultivated/movie_api/issues"
-  },
-  "homepage": "https://github.com/legacycultivated/movie_api#readme",
-  "dependencies": {
-    "body-parser": "^1.20.0",
-    "express": "^4.18.1",
-    "morgan": "^1.10.0",
-    "save": "^2.5.0"
-  }
+    "name": "movie_api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/legacycultivated/movie_api.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/legacycultivated/movie_api/issues"
+    },
+    "homepage": "https://github.com/legacycultivated/movie_api#readme",
+    "dependencies": {
+        "body-parser": "^1.20.0",
+        "express": "^4.18.1",
+        "morgan": "^1.10.0",
+        "save": "^2.5.0"
+    }
 }

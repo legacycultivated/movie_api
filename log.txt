@@ -4,3 +4,6 @@ Timestamp: Sat Jun 04 2022 21:34:30 GMT-0700 (Pacific Daylight Time)
 URL: /favicon.ico
 Timestamp: Sat Jun 04 2022 21:34:30 GMT-0700 (Pacific Daylight Time)
 
+::1 - - [15/Jun/2022:17:37:28 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36"
+::1 - - [15/Jun/2022:17:37:48 +0000] "GET /public/documentation HTTP/1.1" 404 159 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36"
+::1 - - [15/Jun/2022:17:39:15 +0000] "GET /documentation.html HTTP/1.1" 200 623 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36"
