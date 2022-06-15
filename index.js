@@ -1,7 +1,10 @@
+const bodyParser = require("body-parser");
 const express = require("express");
 morgan = require("morgan");
 fs = require("fs"); // import node modules fs and path
 path = require("path");
+uuid = require("uuid");
+
 
 const app = express();
 //create a write stream(in append mode)
@@ -9,46 +12,71 @@ const app = express();
 const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
     flags: "a"
 });
+/*
+
+
+let users = [
+
+]
+
+let movies = [
+
+];
+
+
+*/
+
+app.use(bodyParser.json());
 
 let movies = [{
-        title: "The Godfather",
-        director: "Francis For Coppola"
+        "Title": "The Godfather",
+        "Genre": "Thriller",
+        "Director": "Francis For Coppola"
     },
     {
-        title: "Top Gun",
-        director: "Tony Scott"
+        "Title": "Top Gun",
+        "Genre": "Action",
+        "Director": "Tony Scott"
     },
     {
-        title: "Get Out",
-        director: "Jordan Peele"
+        "Title": "Get Out",
+        "Genre": "Suspense/Horror",
+        "Director": "Jordan Peele"
     },
     {
-        title: "Jurassic Park",
-        director: "Steven Spielberg"
+        "Title": "Jurassic Park",
+        "Genre": "Thriller/Action",
+        "Director": "Steven Spielberg"
     },
     {
-        title: "Spider-man: No Way Home",
-        director: "Jon Watts"
+        "Title": "Spider-man: No Way Home",
+        "Genre": "Action",
+        "Director": "Jon Watts"
     },
     {
-        title: "The Batman",
-        director: "Matt Reeves"
+        "Title": "The Batman",
+        "Genre": "Action",
+        "Director": "Matt Reeves"
     },
     {
-        title: "The Avengers",
-        director: "Joss Whedon"
+        "Title": "The Avengers",
+        "Genre": "Action",
+        "Director": "Joss Whedon"
     },
     {
-        title: "Avatar",
-        director: "James Cameron"
+        "Title": "Avatar",
+        "Genre": "Sci-Fi",
+        "Director": "James Cameron"
     },
     {
-        title: "Independence Day",
-        director: "Roland Emmerich"
+        "Title": "Independence Day",
+        "Genre": "Sci-Fi",
+        "Director": "Roland Emmerich"
     },
     {
-        title: "Good Will Hunting",
-        director: "Gus Van Sant"
+        "Title": "Good Will Hunting",
+        "Genre": "Drama",
+        "Director": "Gus Van Sant"
     }
 ];
 
@@ -63,9 +91,39 @@ app.get("public/documentation", (req, res) => {
     });
 });
 
+//READ
 app.get("/movies", (req, res) => {
-    res.json(movies);
+    res.status(200).json(movies);
 });
+
+//READ
+app.get("/movies/title/:titleName", (req, res) => {
+    const { titleName } = req.params;
+    const title = movies.find(movie => movie.Title === titleName);
+
+    if (title) {
+        res.status(200).json(title);
+    } else {
+        res.status(400).send('no such movie')
+    }
+
+});
+
+//READ
+app.get("/movies/genre/:genreName", (req, res) => {
+    const { genreName } = req.params;
+    const genre = movies.find(movie => movie.Genre === genreName).Genre;
+
+    if (genre) {
+        res.status(200).json(genre);
+    } else {
+        res.status(400).send('no such genre')
+    }
+
+});
+
+
+
 
 //Middleware functions
 app.use(
