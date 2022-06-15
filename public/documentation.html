@@ -5,15 +5,70 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>myFlix</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
 </head>
 
 <body>
-    <p>A server side component of a "movie" web application. Users will be able to sign up with their personal information and create a list of their favorite movies. This API will include information about movies such as titles, directors, and genres.
-    </p>
+    <header>
+        <h1>myFlix Documentation</h1>
+    </header>
+    <main>
+        <h2>Description</h2>
+        <p>A server side component of a "movie" web application. Users will be able to sign up with their personal information and create a list of their favorite movies. This API will include information about movies such as titles, directors, and genres.
+        </p>
+        <div>
+            <h2>REST API Movie Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Business Logic</th>
+                        <th>URL</th>
+                        <th>HTTP Method</th>
+                        <th>Request body data format</th>
+                        <th>Response body data format</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Get a list of movies</td>
+                        <td>/movies</td>
+                        <td>GET</td>
+                        <td>None</td>
+                        <td>A JSON object holding data about all the movies</td>
+                    </tr>
+                    <tr>
+                        <td>Get data about a single movie by title</td>
+                        <td>/students/[Name]</td>
+                        <td>GET</td>
+                        <td>none</td>
+                        <td>A JSON object holding data about a single movie, containing title, img url, genre, description and director
+                            <pre>
+                            <code>
+                                {
+                                    id:'',
+                                    title:'',
+                                    description:'',
+                                    genre:'',
+                                    director:'',
+                                    img:'',
+                                } 
+                            </code>
+                        </pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+    </main>
+
 
     <script src="" async defer></script>
 </body>
