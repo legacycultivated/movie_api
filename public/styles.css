@@ -1,0 +1,17 @@
+h1 {
+    margin-bottom: 40px;
+    /* margin-top: 40px; */
+    color: black;
+}
+
+h2 {
+    color: black;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
