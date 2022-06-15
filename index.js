@@ -1,30 +1,10 @@
-const bodyParser = require("body-parser");
-const express = require("express");
-morgan = require("morgan");
-fs = require("fs"); // import node modules fs and path
-path = require("path");
-uuid = require("uuid");
+const bodyParser = require("body-parser"),
+    express = require("express"),
+    morgan = require("morgan"),
+    uuid = require("uuid");
 
 
 const app = express();
-//create a write stream(in append mode)
-//a 'log.txt' file is created in root directory
-const accessLogStream = fs.createWriteStream(path.join(__dirname, "log.txt"), {
-    flags: "a"
-});
-/*
-
-
-let users = [
-
-]
-
-let movies = [
-
-];
-
-
-*/
 
 app.use(bodyParser.json());
 
@@ -125,11 +105,6 @@ app.get("/", (req, res) => {
     res.send("Welcome to myFlix!");
 });
 
-app.get("public/documentation", (req, res) => {
-    res.sendFile("public/documentation.html", {
-        root: __dirname
-    });
-});
 
 //READ
 app.get("/movies", (req, res) => {
@@ -180,11 +155,7 @@ app.get("/movies/director/:directorName", (req, res) => {
 
 
 //Middleware functions
-app.use(
-    morgan("combined", {
-        stream: accessLogStream
-    })
-);
+app.use(morgan("common"));
 
 app.use(express.static("public"));
 
