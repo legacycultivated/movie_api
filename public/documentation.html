@@ -41,7 +41,7 @@
                     </tr>
                     <tr>
                         <td>Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user</td>
-                        <td>/students/[Name]</td>
+                        <td>/movies/[title]/[titleName]</td>
                         <td>GET</td>
                         <td>none</td>
                         <td>A JSON object holding data about a single movie, containing an ID, title, img url, genre, description and director. Example:
@@ -87,8 +87,7 @@
                                     {
                                     name: '',
                                     bio: '',
-                                    birth: '',
-                                    death: ''
+                                    birth year: '',
                                     }
                                 </code>
                             </pre>
@@ -102,10 +101,7 @@
                             <pre>
                                 <code>
                                     {
-                                    username: '',
-                                    password: '',
-                                    email: '',
-                                    birthday: '',
+                                    name: '',
                                     favoriteMovies: []
                                     }
                                 </code>
@@ -116,10 +112,7 @@
                                 <code>
                                     {
                                     id: '',
-                                    username: '',
-                                    password:'',
-                                    email: '',
-                                    birthday: '',
+                                    name: '',
                                     favoriteMovies: []
                                     }
                                 </code>
@@ -136,10 +129,7 @@
                                 <code>
                                     {
                                     id: '',
-                                    username: '',
-                                    password: '',
-                                    email: '',
-                                    birthday: '',
+                                    name: '',
                                     favoriteMovies: []
                                     }
                                 </code>
@@ -148,14 +138,14 @@
                     </tr>
                     <tr>
                         <td>Allow users to add a movie to list of favorites</td>
-                        <td>/users/[id]/[movieName]</td>
+                        <td>/users/[id]/[movieTitle]</td>
                         <td>Post</td>
                         <td>none</td>
                         <td>A text message showing that a movie has been successfully added to favorites</td>
                     </tr>
                     <tr>
                         <td>Allow users to remove a movie from list of favorites</td>
-                        <td>/users/[id]/[movieName]</td>
+                        <td>/users/[id]/[movieTitle]</td>
                         <td>Delete</td>
                         <td>none</td>
                         <td>A text message showing that a movie has been successfully removed from favorites</td>
