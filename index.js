@@ -132,7 +132,6 @@ app.post('/users', (req, res) => {
 
 
 
-
 //UPDATE user info by Username
 app.put('/users/:Username', (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.Username }, {
@@ -140,7 +139,7 @@ app.put('/users/:Username', (req, res) => {
                 Username: req.body.Username,
                 Password: req.body.Password,
                 Email: req.body.Email,
-                Birthday: req.body.Birthday
+                Birthday: req.body.Birthdate
             }
         }, { new: true },
         (err, updatedUser) => {
@@ -170,21 +169,6 @@ app.post('/users/:Username/movies/:MovieID', (req, res) => {
 });
 
 
-//UPDATE or POST
-app.post("/users/:id/:movieTitle", (req, res) => {
-    const { id, movieTitle } = req.params;
-    const updatedUser = req.body;
-
-    let user = users.find(user => user.id == id);
-
-    if (user) {
-        user.favoriteMovies.push(movieTitle);
-        res.status(200).send(`${movieTitle} has been added to user ${id}'s array.`);
-    } else {
-        res.status(400).send("no such user")
-    }
-
-});
 
 // DELETE
 app.delete("/users/:id/:movieTitle", (req, res) => {
