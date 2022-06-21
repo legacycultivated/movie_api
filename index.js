@@ -139,7 +139,7 @@ app.put('/users/:Username', (req, res) => {
                 Username: req.body.Username,
                 Password: req.body.Password,
                 Email: req.body.Email,
-                Birthday: req.body.Birthdate
+                Birthday: req.body.Birthday
             }
         }, { new: true },
         (err, updatedUser) => {
@@ -170,21 +170,22 @@ app.post('/users/:Username/movies/:MovieID', (req, res) => {
 
 
 
-// DELETE
-app.delete("/users/:id/:movieTitle", (req, res) => {
-    const { id, movieTitle } = req.params;
-
-    let user = users.find(user => user.id == id);
-
-
-    if (user) {
-        user.favoriteMovies = user.favoriteMovies.filter(title => title !== movieTitle);
-        res.status(200).send(`${movieTitle} has been removed from user ${id}'s array.`);
-    } else {
-        res.status(400).send("no such user")
-    }
-
+// DELETE movie from users favorite list
+app.delete('/users/:Username/movies/:MovieID', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.Username }, {
+            $pull: { FavoriteMovies: req.params.MovieID },
+        }, { new: true },
+        (err, updatedUser) => {
+            if (err) {
+                console.error(err);
+                res.status(500).send('Error: ' + err);
+            } else {
+                res.json(updatedUser);
+            }
+        }
+    );
 });
+
 
 //DELETE a user by username
 app.delete('/users/:Username', (req, res) => {
@@ -202,21 +203,7 @@ app.delete('/users/:Username', (req, res) => {
         });
 });
 
-// DELETE
-app.delete("/users/:id", (req, res) => {
-    const { id } = req.params;
 
-    let user = users.find(user => user.id == id);
-
-
-    if (user) {
-        users = users.filter(user => user.id != id);
-        res.status(200).send(`user ${id} has been deleted.`);
-    } else {
-        res.status(400).send("no such user")
-    }
-
-});
 
 
 //Middleware functions
