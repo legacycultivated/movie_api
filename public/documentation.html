@@ -88,6 +88,7 @@
                                     name: '',
                                     bio: '',
                                     birth year: '',
+                                    death year:''
                                     }
                                 </code>
                             </pre>
@@ -95,14 +96,16 @@
                     </tr>
                     <tr>
                         <td>Allow new users to register</td>
-                        <td>/users</td>
+                        <td>/users/[username]</td>
                         <td>Post</td>
                         <td>A JSON object holding data about the users to add, structured like:
                             <pre>
                                 <code>
                                     {
-                                    name: '',
-                                    favoriteMovies: []
+                                        name: '',
+                                        password:'',
+                                        email:'',
+                                        favoriteMovies: []
                                     }
                                 </code>
                             </pre>
@@ -113,6 +116,8 @@
                                     {
                                     id: '',
                                     name: '',
+                                    password:'',
+                                    email:'',
                                     favoriteMovies: []
                                     }
                                 </code>
@@ -121,7 +126,7 @@
                     </tr>
                     <tr>
                         <td>Allow users to update their user info (username)</td>
-                        <td>/users/[id]</td>
+                        <td>/users/[username]</td>
                         <td>Put</td>
                         <td>none</td>
                         <td>
@@ -130,6 +135,8 @@
                                     {
                                     id: '',
                                     name: '',
+                                    password:'',
+                                    email:'',
                                     favoriteMovies: []
                                     }
                                 </code>
@@ -138,21 +145,21 @@
                     </tr>
                     <tr>
                         <td>Allow users to add a movie to list of favorites</td>
-                        <td>/users/[id]/[movieTitle]</td>
+                        <td>/users/[username]/movies/[movieID]</td>
                         <td>Post</td>
                         <td>none</td>
                         <td>A text message showing that a movie has been successfully added to favorites</td>
                     </tr>
                     <tr>
                         <td>Allow users to remove a movie from list of favorites</td>
-                        <td>/users/[id]/[movieTitle]</td>
+                        <td>/users/[username]/movies/[movieID]</td>
                         <td>Delete</td>
                         <td>none</td>
                         <td>A text message showing that a movie has been successfully removed from favorites</td>
                     </tr>
                     <tr>
                         <td>Allow exisiting users to deregister</td>
-                        <td>/users/[id]</td>
+                        <td>/users/[username]</td>
                         <td>Delete</td>
                         <td>none</td>
                         <td>A text message indicating whether the user was successfully deregisted</td>
