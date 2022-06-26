@@ -5,6 +5,8 @@ const bodyParser = require("body-parser"),
 
 const app = express();
 
+const { check, validationResult } = require('express-validator');
+
 
 const mongoose = require('mongoose');
 const Models = require('./models.js');
@@ -125,6 +127,7 @@ app.get('/users/:Username', passport.authenticate('jwt', {
 //Add New Users
 // CREATE
 app.post('/users', (req, res) => {
+    let hashedPassword = Users.hashedPassword(req.body.Password);
     Users.findOne({ Username: req.body.Username })
         .then((user) => {
             if (user) {
