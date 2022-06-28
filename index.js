@@ -126,7 +126,18 @@ app.get('/users/:Username', passport.authenticate('jwt', {
 
 //Add New Users
 // CREATE
-app.post('/users', (req, res) => {
+app.post('/users', [
+    check('Username', 'Username is required').isLength({ min: 5 }),
+    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email does not appear to be valid').isEmail()
+], (req, res) => {
+    // check the validation object for errors
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+    }
     let hashedPassword = Users.hashedPassword(req.body.Password);
     Users.findOne({ Username: req.body.Username })
         .then((user) => {
