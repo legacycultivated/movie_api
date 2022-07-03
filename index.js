@@ -128,44 +128,51 @@ app.get('/users/:Username', passport.authenticate('jwt', {
 
 //Add New Users
 // CREATE
-app.post('/users', [
-    check('Username', 'Username is required').isLength({ min: 5 }),
-    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-    check('Password', 'Password is required').not().isEmpty(),
-    check('Email', 'Email does not appear to be valid').isEmail()
-], (req, res) => {
-    // check the validation object for errors
-    let errors = validationResult(req);
-
-    if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
+app.post(
+    '/users', [
+        check('Username', 'Username is required').isLength({ min: 5 }),
+        check(
+            'Username',
+            'Username contains non alphanumeric characters - not allowed.'
+        ).isAlphanumeric(),
+        check('Password', 'Password is required').not().isEmpty(),
+        check('Email', 'Email does not appear to be valid').isEmail(),
+    ],
+    (req, res) => {
+        // 	checks the validation object for errors
+        let errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() });
+        }
+        let hashedPassword = Users.hashPassword(req.body.Password);
+        Users.findOne({ Username: req.body.Username })
+            // search to see if user with the requested username already exitsts
+            .then((user) => {
+                if (user) {
+                    //	if user is found, sends a response it already exists
+                    return res.status(400).send(req.body.Username + ' already exists');
+                } else {
+                    Users.create({
+                            Username: req.body.Username,
+                            Password: hashedPassword,
+                            Email: req.body.Email,
+                            Birthday: req.body.Birthday,
+                        })
+                        .then((user) => {
+                            res.status(201).json(user);
+                        })
+                        .catch((error) => {
+                            console.error(error);
+                            res.status(500).send('Error: ' + error);
+                        });
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+                res.status(500).send('Error: ' + error);
+            });
     }
-    let hashedPassword = Users.hashPassword(req.body.Password);
-    Users.findOne({ Username: req.body.Username })
-        .then((user) => {
-            if (user) {
-                return res.status(400).send(req.body.Username + 'already exists');
-            } else {
-                Users
-                    .create({
-                        Username: req.body.Username,
-                        Password: req.body.hashPassword,
-                        Email: req.body.Email,
-                        Birthday: req.body.Birthday
-                    })
-                    .then((user) => { res.status(201).json(user) })
-                    .catch((error) => {
-                        console.error(error);
-                        res.status(500).send('Error: ' + error);
-                    })
-            }
-        })
-        .catch((error) => {
-            console.error(error);
-            res.status(500).send('Error: ' + error);
-        });
-});
-
+);
 
 
 //UPDATE user info by Username
