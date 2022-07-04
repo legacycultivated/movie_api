@@ -130,7 +130,7 @@ app.get('/users/:Username', passport.authenticate('jwt', {
 // CREATE
 app.post(
     '/users', [
-        check('Username', 'Username is required').isLength({ min: 5 }),
+        check('Username', 'Username length needs to be at least 5 characters.').isLength({ min: 5 }),
         check(
             'Username',
             'Username contains non alphanumeric characters - not allowed.'
