@@ -145,7 +145,7 @@ app.get(
 //Add New Users
 // CREATE
 app.post(
-  "/users",
+  "/register",
   [
     check(
       "Username",
