@@ -37,16 +37,20 @@ app.get("/", (req, res) => {
 });
 
 //GET All Movies , passport.authenticate('jwt', {session: false})
-app.get("/movies", (req, res) => {
-  Movies.find()
-    .then((movies) => {
-      res.status(201).json(movies);
-    })
-    .catch((err) => {
-      console.err(err);
-      res.status(500).send("Error: " + err);
-    });
-});
+app.get(
+  "/movies",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Movies.find()
+      .then((movies) => {
+        res.status(201).json(movies);
+      })
+      .catch((err) => {
+        console.err(err);
+        res.status(500).send("Error: " + err);
+      });
+  }
+);
 
 //GET Movies by Title
 app.get(
