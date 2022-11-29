@@ -1,41 +1,44 @@
 {
-    "name": "movie_api",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js",
-        "dev": "nodemon index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/legacycultivated/movie_api.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/legacycultivated/movie_api/issues"
-    },
-    "homepage": "https://github.com/legacycultivated/movie_api#readme",
-    "dependencies": {
-        "bcrypt": "^5.0.1",
-        "body-parser": "^1.20.0",
-        "cors": "^2.8.5",
-        "express": "^4.18.1",
-        "express-validator": "^6.14.2",
-        "jsonwebtoken": "^8.5.1",
-        "mongoose": "^6.4.0",
-        "morgan": "^1.10.0",
-        "node": "^19.1.0",
-        "passport": "^0.6.0",
-        "passport-jwt": "^4.0.0",
-        "passport-local": "^1.0.0",
-        "save": "^2.5.0",
-        "uuid": "^8.3.2"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.16"
-    }
+  "name": "movie_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "^19.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/legacycultivated/movie_api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/legacycultivated/movie_api/issues"
+  },
+  "homepage": "https://github.com/legacycultivated/movie_api#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.0",
+    "morgan": "^1.10.0",
+    "node": "^19.1.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "save": "^2.5.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
